@@ -1,0 +1,20 @@
+﻿@page
+@model DockerDotnetTest.Pages.EmitOwnEventsModel
+@{
+}
+
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr />
+
+<h3>Kontinuierlich Zufallszahlen an Eventconsumer senden</h3>
+<p><a asp-page-handler="SendRandomNumbers">Starten</a><a asp-page-handler="StopSendRandomNumbers">Stoppen</a>c</p>
+
+<hr/>
+
+<p>
+    <form method="post">
+        <input asp-for="PostParameter" />
+        <button>Eingabe senden</button>
+    </form>
+</p>

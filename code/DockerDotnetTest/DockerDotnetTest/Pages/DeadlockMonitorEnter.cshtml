@@ -1,0 +1,15 @@
+﻿@page
+@model DockerDotnetTest.Pages.DeadlockMonitorEnterModel
+@{
+}
+
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr />
+
+<h3>Zwei Threads mit <i>lock()</i> Statement</h3>
+<form method="post" asp-page-handler="TwoMonitor">
+    <button>Erzwinge Deadlock</button>
+</form>
+<br/>
+

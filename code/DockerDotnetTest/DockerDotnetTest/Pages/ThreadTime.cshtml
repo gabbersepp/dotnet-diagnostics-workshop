@@ -1,0 +1,19 @@
+﻿@page
+@model DockerDotnetTest.Pages.ThreadTimeModel
+@{
+}
+
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr />
+
+<p>Bei Klick auf den Button werden diverse Requests an öffentliche Endpunkte gestartet</p>
+<form method="post">
+    <button asp-page-handler="Task">Starten (Async)</button>
+    <button asp-page-handler="NonTask">Starten (Ohne Async)</button>
+</form>
+
+<h3>Befehl:</h3>
+<p>
+    dotnet-trace collect -p 287 --profile cpu-sampling --providers "Microsoft-Diagnostics-DiagnosticSource:0xFFFFFFFFFFFFF7FF:4:FilterAndPayloadSpecs=HttpHandlerDiagnosticListener/System.Net.Http.Request@Activity2Start:Request.RequestUri\nHttpHandlerDiagnosticListener/System.Net.Http.Response@Activity2Stop:Response.StatusCode,System.Threading.Tasks.TplEventSource:1FF:5"
+</p>

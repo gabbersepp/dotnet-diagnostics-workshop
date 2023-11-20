@@ -1,0 +1,11 @@
+﻿@page
+@model DockerDotnetTest.Pages.EventCountersModel
+@{
+}
+
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr/>
+
+<p><a asp-page-handler="RandomRequestDuration">Request mit zufälliger Requestdauer</a></p>
+<p><a asp-page-handler="AllocateMemory">Zufällige Anzahl an Bytes über 2 Minuten reservieren</a></p>

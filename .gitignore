@@ -1,0 +1,8 @@
+.vs
+bin
+obj
+core_*
+*.nettrace
+*.user
+symbols
+dist

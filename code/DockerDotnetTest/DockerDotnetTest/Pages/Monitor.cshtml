@@ -1,0 +1,18 @@
+﻿@page
+@model DockerDotnetTest.Pages.MonitorModel
+@{
+}
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr />
+
+
+<p>Hashcode von Objekt: <b>@Model.HashCode</b></p>
+<p>Aktuelle Managed ThreadId: <b>@Model.ThreadId</b></p>
+
+<hr/>
+<h3>Aktionen</h3>
+<p><a asp-page-handler="ResetObject">Reset Objekt</a></p>
+<p><a asp-page-handler="RequestHashcode">Hashcode erzeugen</a></p>
+<p><a asp-page-handler="LockObject">Objekt locken</a></p>
+<p><a asp-page-handler="HashAndLock">Reset & Objekt locken & Hashcode erzeugen</a></p>

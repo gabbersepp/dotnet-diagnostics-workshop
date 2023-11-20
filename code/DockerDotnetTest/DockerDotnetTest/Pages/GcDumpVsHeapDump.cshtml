@@ -1,0 +1,13 @@
+﻿@page
+@model DockerDotnetTest.Pages.GcDumpVsHeapDumpModel
+@{
+}
+
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr />
+
+<h3>Vergleich GcDump vs MemoryDump </h3>
+<p>Erzeuge ein Objekt der Klasse <b>Car</b></p>
+<p><a asp-page-handler="RestrictiveGetter">Ausführen</a></p>
+<hr />

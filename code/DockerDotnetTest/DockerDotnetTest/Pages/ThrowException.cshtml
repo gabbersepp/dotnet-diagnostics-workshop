@@ -1,0 +1,17 @@
+﻿@page
+@model DockerDotnetTest.Pages.ThrowExceptionModel
+@{
+}
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr />
+
+<p>
+    <form method="post">
+        <button type="submit">Exception werfen</button>
+    </form>
+    <form method="post" asp-page-handler="TryCatch">
+        <button type="submit">Exception werfen und fangen</button>
+    </form>
+
+</p>

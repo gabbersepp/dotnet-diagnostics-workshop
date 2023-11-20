@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+    <h1 class="display-4">Szenarien</h1>
+    <p><a asp-page="/GcDumpVsHeapDump">GCDump vs Heap Dump</a></p>
+    <p><a asp-page="/ThrowException">Exceptions werfen</a></p>
+    <p><a asp-page="/SimpleSocketTraces">Einfache Socket Traces</a></p>
+    <p><a asp-page="/EmitOwnEvents">Eigene Events erzeugen</a></p>
+    <p><a asp-page="/EventCounters">Event Counters</a></p>
+    <p><a asp-page="/CompareUserModeKernelModeCpuSampling">Vergleich User Mode vs Kernel Mode (CPU Sampling)</a></p>
+    <p><a asp-page="/ThreadTime">Threadtime Profiling</a></p>
+    <p><a asp-page="/Monitor">Monitor.Enter / Mutex Analyse</a></p>
+    <p><a asp-page="/DeadlockMonitorEnter">Deadlocks durch Monitor.Enter</a></p>
+    <p><a asp-page="/Examples">Beispiele</a></p>
+
+
+</div>

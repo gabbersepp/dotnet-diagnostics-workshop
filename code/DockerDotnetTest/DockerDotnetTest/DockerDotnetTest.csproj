@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<DockerfileRunArguments>--mount "source=dotnet-tmp,target=/tmp"</DockerfileRunArguments>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Scenario\GcDumpVsHeapDump\" />
+    <Folder Include="Scenario\EmitOwnEvents\" />
+    <Folder Include="Scenario\EventCounter\" />
+    <Folder Include="Scenario\DynamicClasses\" />
+    <Folder Include="Scenario\Memory\" />
+    <Folder Include="Scenario\Stackoverflow\" />
+    <Folder Include="Scenario\ThreadTime\" />
+  </ItemGroup>
+
+</Project>

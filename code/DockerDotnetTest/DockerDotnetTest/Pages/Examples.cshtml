@@ -1,0 +1,39 @@
+﻿@page
+@model DockerDotnetTest.Pages.ExamplesModel
+@{
+}
+
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr/>
+
+<h3>InvalidProgramException </h3>
+<p>Ungültiger IL Code in RestrictiveGetter Proxy</p>
+<p><a asp-page-handler="RestrictiveGetter">Ausführen</a></p>
+<hr/>
+<h3>Threadpoolstarvation</h3>
+<p>Zu wenig Worker Threads für die anfallenden Tasks</p>
+<p><a asp-page-handler="ThreadPoolStarvationFull">Volle Knäcke reinballern</a></p>
+<p><a asp-page-handler="SayHelloAfterThreadPoolStarvation">"Hallo" vom Server: </a>@Model.Message</p>
+<hr/>
+<h3>Deadlock zwischen DB und Dotnet</h3>
+<p><a asp-page-handler="QueryAndLock">Zuerst Query absetzen, dann Locken</a></p>
+<p><a asp-page-handler="LockAndQuery">Dann locken und Query absetzen</a></p>
+<hr/>
+<h3>GC aufrufen</h3>
+<p><a asp-page-handler="GcCollect">GC aufrufen</a></p>
+<hr/>
+<h3>Speicherleak durch dynamische Klassen</h3>
+<p><a asp-page-handler="CreateSameDynamicClassSeveralTimes">Die gleiche dynamische Klasse mehrfach erzeugen</a></p>
+<hr/>
+<h3>Managed Leak</h3>
+<p><a asp-page-handler="ProduceManagedLeak">Managed Leak erzeugen</a></p>
+<hr/>
+<h3>Fatal Error</h3>
+<p><a asp-page-handler="FatalException">Erzwinge App Crash</a></p>
+<hr/>
+<h3>Hohe CPU Auslastung</h3>
+<p><a asp-page-handler="HighCpu">Erzeuge 2 Minuten CPU Last</a></p>
+<hr/>
+<h3>Woher kommt Speicherverbrauch?</h3>
+<p><a asp-page-handler="MemoryConsumptionSource">Viel Speicher anfordern (120 Sekunden)</a></p>

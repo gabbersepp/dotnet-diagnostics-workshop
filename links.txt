@@ -1,0 +1,24 @@
+https://www.mytechramblings.com/posts/profiling-a-net-app-with-dotnet-cli-diagnostic-tools/
+--> blocking threads!!!! worker threads und so graffel
+
+https://github.com/dotnet/runtime/blob/main/docs/workflow/debugging/libraries/windows-instructions.md#systemnet-namespaces
+
+https://learn.microsoft.com/en-us/dotnet/core/diagnostics/debug-highcpu?tabs=windows
+
+https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation
+--> alternative zu eventcounter, neuer
+
+
+https://github.com/dotnet/diagnostics/blob/main/documentation/dotnet-trace-instructions.md
+
+https://learn.microsoft.com/en-us/dotnet/core/diagnostics/debug-memory-leak
+
+https://learn.microsoft.com/en-us/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/lab-3-troubleshoot-crash-gc-issues-dotnet-dump
+
+https://learn.microsoft.com/de-de/shows/perfview-tutorial/
+
+
+https://github.com/dotnet/runtime/issues/66074
+https://github.com/dotnet/docs/blob/main/docs/core/diagnostics/debug-stackoverflow.md
+
+https://learn.microsoft.com/en-us/dotnet/core/diagnostics/collect-dumps-crash

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerdotnettest
+spec:
+  selector:
+    matchLabels:
+      app: dockerdotnettest
+  template:
+    metadata:
+      labels:
+        app: dockerdotnettest
+    spec:
+      containers:
+      - name: dockerdotnettest
+        image: ghcr.io/gabbersepp/dockerdotnettest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: diagnostics
+          mountPath: /tmp
+      - name: monitor-sidecar
+        image: mcr.microsoft.com/dotnet/monitor
+        env:
+          - name: DOTNETMONITOR_Urls
+            value: http://*:52323
+          - name: DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE
+            value: "false"
+        ports:
+        - containerPort: 52323
+        args: ["collect", "--no-auth" ]
+        volumeMounts:
+        - name: diagnostics
+          mountPath: /tmp
+      imagePullSecrets:
+      - name: ghcrio
+      volumes:
+      - name: diagnostics
+        emptyDir: {}

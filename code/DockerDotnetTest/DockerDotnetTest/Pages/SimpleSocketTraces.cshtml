@@ -1,0 +1,65 @@
+﻿@page
+@model DockerDotnetTest.Pages.SimpleSocketTracesModel
+@{
+
+}
+
+<h3>Requestergebnis:</h3>
+<p font-color="red"><b>@Model.Status</b></p>
+<hr/>
+
+<p>Bitte Text für Echo eingeben:</p>
+<p>
+    <form method="post">    
+        <input asp-for="Message"/>
+        <button type="submit">Senden</button>
+    </form>
+</p>
+<p>Echo: @Model.EchoMessage</p>
+<p>Bitte Text für Echo eingeben (<b>Ajax</b>):</p>
+<p><form method="post">
+    <input id="message" />
+    @Html.AntiForgeryToken()
+    <button type="button" id="callAjax">Senden</button>
+    @section Scripts
+    {
+        <script type="text/javascript">
+        $("#callAjax").click(function(){
+            $.ajax({
+                type: "POST",
+                        url: "/SimpleSocketTraces?handler=DoAjaxEcho",
+                data:{ "message": $("#message").val() },
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: "json",
+                headers:
+                {
+                    "RequestVerificationToken": $('input:hidden[name="__RequestVerificationToken"]').val()
+                },
+                success: function (msg) {
+                    $("#request-content").text(msg)
+                }
+            });
+        });
+    </script>
+    }
+</form></p>
+
+<p>Echo vom Server:</p>
+<p><div id="request-content"></div></p>
+<hr/>
+<p>
+    <a asp-page-handler="DoSomething">Mach einen Request vom Server aus</a>
+</p>
+
+<p>JSON Response:</p>
+<p>@Model.JsonResponse</p>
+<hr/>
+<h3><a asp-page-handler="HostnameNotResolveable">HttpClient: Hostname nicht auflösbar</a></h3>
+<p><b>Ergebnis: </b>@Model.HostNameResult</p>
+<hr/>
+<h3><a asp-page-handler="PortNotReachable">HttpClient: Port nicht erreichbar</a></h3>
+<p><b>Ergebnis: </b>@Model.PortResult</p>
+<hr />
+<h3><a asp-page-handler="CertInvalid">HttpClient: Zertifikat ungültig</a></h3>
+<p><b>Ergebnis: </b>@Model.CertResult</p>
+<hr />
