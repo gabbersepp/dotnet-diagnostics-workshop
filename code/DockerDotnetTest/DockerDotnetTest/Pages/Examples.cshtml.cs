@@ -72,6 +72,39 @@ namespace DockerDotnetTest.Pages
 
         private static object LockObject = new object();
 
+        public void OnGetSetupSql()
+        {
+            string connectionString =
+                $"Data Source={Environment.GetEnvironmentVariable("SQLIP")};Initial Catalog=master;User Id=sa;Password=Test1234!;TrustServerCertificate=True";
+
+            string queryString = @"
+CREATE TABLE Test (
+    Field1 nvarchar(max)
+);
+INSERT INTO test(Field1) VALUES('Test');
+";
+
+            using (SqlConnection connection =
+                   new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(queryString, connection);
+                    command.Connection = connection;
+                    command.CommandTimeout = 60 * 10;
+                    
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            Status = "SQL Setup abgeschlossen";
+        }
+
         public void OnGetLockAndQuery()
         {
             lock (LockObject)
@@ -80,7 +113,7 @@ namespace DockerDotnetTest.Pages
                     $"Data Source={Environment.GetEnvironmentVariable("SQLIP")};Initial Catalog=master;User Id=sa;Password=Test1234!;TrustServerCertificate=True";
 
                 string queryString = @"
-SELECT * FROM Ticket WITH(HOLDLOCK) WHERE id = 1 
+SELECT * FROM Test WITH(HOLDLOCK)
 ";
 
                 using (SqlConnection connection =
@@ -105,7 +138,6 @@ SELECT * FROM Ticket WITH(HOLDLOCK) WHERE id = 1
                     {
                         Console.WriteLine(ex.Message);
                     }
-                    Console.ReadLine();
                 }
             }
 
@@ -118,7 +150,7 @@ SELECT * FROM Ticket WITH(HOLDLOCK) WHERE id = 1
                 $"Data Source={Environment.GetEnvironmentVariable("SQLIP")};Initial Catalog=master;User Id=sa;Password=Test1234!;TrustServerCertificate=True";
 
             string queryString = @"
-UPDATE Ticket SET Title = Title WHERE id = 1
+UPDATE Test SET Field1 = Field1
 ";
 
             using (SqlConnection connection =
@@ -150,7 +182,6 @@ UPDATE Ticket SET Title = Title WHERE id = 1
                 {
                     Console.WriteLine(ex.Message);
                 }
-                Console.ReadLine();
             }
 
             Status = "QueryAndLock beendet";

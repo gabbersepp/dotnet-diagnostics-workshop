@@ -13,6 +13,7 @@ RUN /root/.dotnet/tools/dotnet-sos install
 RUN apt-get install lldb -y
 RUN apt-get update && apt-get install -y procps && rm -rf /var/lib/apt/lists/*
 ENV PATH="/root/.dotnet/tools/:${PATH}"
+ENV COMPlus_JITMinOpts=1
 WORKDIR /app
 EXPOSE 80
 

@@ -552,6 +552,12 @@ Env Var: TriggerError
 - Sofort Dump holen (wer weis, wann die Liveness Probes anschlagen!)
 - `pstacks` Befehl
 
+<!--
+pstacks zeigt OSID
+setthread will DBGID haben
+clrthreads
+-->
+
 ---
 
 # Monitor.Enter - Deadlock

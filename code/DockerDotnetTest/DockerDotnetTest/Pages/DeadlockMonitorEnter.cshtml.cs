@@ -11,6 +11,36 @@ namespace DockerDotnetTest.Pages
         public void OnGet()
         {
         }
+        
+        private void Thread1Action(object locker, object locker2)
+        {
+            lock (locker)
+            {
+                Console.WriteLine("Lock 1 in Thread 1 erhalten");
+                Thread.Sleep(100);
+
+                lock (locker2)
+                {
+                    Console.WriteLine("Lock 2 in Thread 1 erhalten");
+                    Thread.Sleep(100);
+                }
+            }
+        }
+
+        private void Thread2Action(object locker, object locker2)
+        {
+            lock (locker2)
+            {
+                Console.WriteLine("Lock 2 in Thread 2 erhalten");
+                Thread.Sleep(100);
+
+                lock (locker)
+                {
+                    Console.WriteLine("Lock 1 in Thread 2 erhalten");
+                    Thread.Sleep(100);
+                }
+            }
+        }
 
         public void OnPostTwoMonitor()
         {
@@ -22,35 +52,13 @@ namespace DockerDotnetTest.Pages
 
             var t1 = new Thread(() =>
             {
-                lock (locker)
-                {
-                    Console.WriteLine("Lock 1 in Thread 1 erhalten");
-                    Thread.Sleep(100);
-
-                    lock (locker2)
-                    {
-                        Console.WriteLine("Lock 2 in Thread 1 erhalten");
-                        Thread.Sleep(100);
-                    }
-                }
-
+                Thread1Action(locker, locker2);
                 Console.WriteLine("Thread 1 Ende");
             });
 
             var t2 = new Thread(() =>
             {
-                lock (locker2)
-                {
-                    Console.WriteLine("Lock 2 in Thread 2 erhalten");
-                    Thread.Sleep(100);
-
-                    lock (locker)
-                    {
-                        Console.WriteLine("Lock 1 in Thread 2 erhalten");
-                        Thread.Sleep(100);
-                    }
-                }
-
+                Thread2Action(locker, locker2);
                 Console.WriteLine("Thread 2 Ende");
             });
 
