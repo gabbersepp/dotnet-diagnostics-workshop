@@ -427,7 +427,7 @@ Grouppattern: `coreclr!->;!=>REST`
 
 # Befehl
 
-dotnet-trace collect -p 287 --profile cpu-sampling --providers "Microsoft-Diagnostics-DiagnosticSource:0xFFFFFFFFFFFFF7FF:4:FilterAndPayloadSpecs=HttpHandlerDiagnosticListener/System.Net.Http.Request@Activity2Start:Request.RequestUri\nHttpHandlerDiagnosticListener/System.Net.Http.Response@Activity2Stop:Response.StatusCode,System.Threading.Tasks.TplEventSource:1FF:5"
+dotnet-trace collect --profile cpu-sampling --providers "Microsoft-Diagnostics-DiagnosticSource:0xFFFFFFFFFFFFF7FF:4:FilterAndPayloadSpecs=HttpHandlerDiagnosticListener/System.Net.Http.Request@Activity2Start:Request.RequestUri\nHttpHandlerDiagnosticListener/System.Net.Http.Response@Activity2Stop:Response.StatusCode,System.Threading.Tasks.TplEventSource:1FF:5" -p 1
 
 ---
 
@@ -624,6 +624,10 @@ Möchte oder muss man tiefer eintauchen, so kann man auch z.B. den blockierenden
 
 # Vorgehen
 - Blockierenden Thread ermitteln
+
+<!--
+wichtig: gleich die SQL Queries ausführen, damit wir die Daten nicht verlieren (Timeout)
+-->
 
 ---
 

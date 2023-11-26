@@ -31,4 +31,5 @@ RUN dotnet publish "DockerDotnetTest.csproj" -c Debug -o /app/publish /p:UseAppH
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY DockerDotnetTest/network.rsp .
 ENTRYPOINT ["dotnet", "DockerDotnetTest.dll"]
